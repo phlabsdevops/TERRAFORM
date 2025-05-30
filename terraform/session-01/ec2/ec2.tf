@@ -1,10 +1,8 @@
 resource "aws_instance" "web"{
-    ami = "ami-09c813fb71547fc4f" #ami
-    instance_type = "t2.micro"
+    ami = var.ami-id #ami
+    instance_type = var.instance-type
     vpc_security_group_ids = [ aws_security_group.roboshop-all.id ]
-    tags = {
-        Name = "HelloTerraform"
-    }
+    tags = var.tags
 }
 
 resource "aws_security_group" "roboshop-all" {

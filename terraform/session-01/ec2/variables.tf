@@ -18,3 +18,20 @@ variable "cidr-blocks"{
     type=list
     default = ["0.0.0.0/0"]
 }
+variable "ami-id" {
+  type=string
+  default="ami-09c813fb71547fc4f"
+}
+variable "instance-type" {
+  type=string
+  default="t3.micro"
+}
+variable "tags" {
+  type=map
+  default={
+    Name = "HelloTerraform"
+    Project="Roboshop"
+    Environment="DEV"
+    Terraform=true
+  }
+}
