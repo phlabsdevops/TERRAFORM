@@ -1,0 +1,32 @@
+resource "aws_instance" "web"{
+    ami = "ami-09c813fb71547fc4f" #ami
+    instance_type = "t2.micro"
+    vpc_security_group_ids = [ aws_security_group.roboshop-all.id ]
+    tags = {
+        Name = "HelloTerraform"
+    }
+}
+
+resource "aws_security_group" "roboshop-all" {
+  name        = var.sg-name #security group name
+  description = var.sg-description
+  #vpc_id      = aws_vpc.main.id
+  ingress {
+    description="allow all"
+    from_port        = var.sg-inbound-from-port
+    to_port          = var.sg-inbound-to-port
+    protocol         = "tcp"
+    cidr_blocks      = var.cidr-blocks
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = var.cidr-blocks
+    ipv6_cidr_blocks = ["::/0"]
+  }
+    tags = {
+    Name = "roboshop-all-aws" #name
+  }
+}
