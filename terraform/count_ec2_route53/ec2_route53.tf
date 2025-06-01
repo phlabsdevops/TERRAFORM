@@ -1,5 +1,6 @@
 resource "aws_instance" "web"{
-    count=5
+    #count=5
+     count=length(var.instance-name)
     ami = var.ami-id #ami
     instance_type = var.instance-name[count.index]==var.instance-name[3] || var.instance-name[count.index]==var.instance-name[4] ? var.instance-type[0]: var.instance-type[1] 
     #vpc_security_group_ids = [ aws_security_group.roboshop-all.id ]
@@ -9,7 +10,8 @@ resource "aws_instance" "web"{
 }
 
 resource "aws_route53_record" "web" {
-  count=5
+  #count=5
+   count=length(var.instance-name)
   zone_id = var.zone-id
   name    = "${var.instance-name[count.index]}.${var.domain-name}"
   type    = "A"
