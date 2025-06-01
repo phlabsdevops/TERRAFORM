@@ -1,3 +1,4 @@
+#multiple ec2 ids and private ips fetching lo count and count.index work cheyavu.
 output "instance_private_ip_0" {
    value= aws_instance.web[0].private_ip
  }
