@@ -7,3 +7,6 @@ resource "aws_instance" "web"{
         Name= "Web-${count.index}"
     }
 }
+
+#delete 3rd ec2 in the 11 instances?
+#terraform destroy -target=aws_instance.web[2]
