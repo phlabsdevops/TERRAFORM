@@ -36,3 +36,7 @@ data "aws_ami" "aws-linux-2" {
 
   most_recent = true
 }
+
+data "aws_vpc" "default" {
+ default=true
+}
