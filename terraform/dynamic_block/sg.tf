@@ -1,3 +1,4 @@
+#dynamic block use cheste for_each and content names are mandatory
 resource "aws_security_group" "dynamic_sg" {
   name        = "dynamic_sg" #security group name
   description = "roboshop project"
