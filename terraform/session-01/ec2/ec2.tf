@@ -17,6 +17,13 @@ resource "aws_security_group" "roboshop-all" {
     cidr_blocks      = var.cidr-blocks
   }
 
+ingress {
+    description="allow all"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = var.cidr-blocks
+  }
   egress {
     from_port        = 0
     to_port          = 0
